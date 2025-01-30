@@ -1,0 +1,36 @@
+apiVersion: argocdproj.io/valpha1
+kind: ApplicationSet
+metadata:
+  name: tailscale-operator
+  namespace: argocd
+spec:
+  generators:
+    - list:
+        elements:
+          - cluster: "in-cluster"
+  template:
+    metadata:
+      name: tailscale
+    spec:
+      project: infra
+      source:
+        - repoURL: ' https://pkgs.tailscale.com/helmcharts'
+          targetRevision: 1.78.1
+          chart: tailscale-operator
+          helm:
+            releaseName: tailscale
+            valueFiles:
+            - $values/charts/tailscale/values.yaml
+        - repoURL: 'https://gitub.com/marcpires/charts.git'
+          targetRevision: 1.178.1
+          ref: values
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: infra
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+        syncOptions:
+        - CreateNamespace=true
+      

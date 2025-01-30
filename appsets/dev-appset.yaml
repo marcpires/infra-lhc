@@ -1,0 +1,11 @@
+apiVersion: argocdproj.io/valpha1
+kind: ApplicationSet
+metadata:
+  name: dev-appset
+  namespace: argocd
+spec:
+  generators:
+    - git:
+        repoURL: 'https://github.com/marcpires/infra.git'
+        directories:
+        - path: apps/*/envs/dev
