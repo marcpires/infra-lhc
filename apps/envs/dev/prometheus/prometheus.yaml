@@ -15,17 +15,19 @@ spec:
       project: monitoring
       source:
        - repoURL: https://prometheus-community.github.io/helm-charts
-         targetRevision: 65.8.0
+         targetRevision: HEAD 
+         # Not good pratice to point to a branch, treats the CRD as a mutable resource
          chart: kube-prometheus-stack
          helm:
           releaseName: prometheus
           # Override the default values for the prometheus chart
-          # using values: | is an anti-pattern, as it mixes ArgoCD maniufest and Helm
-          # this instead adds a separaration of concerns.
+          # using `values: |` is considered an anti-pattern, as it mixes ArgoCD manifest 
+          # and Helm manifest
+          # A better approach is to have the values load from a dependency chart .
           valueFiles:
-          - $values/charts/prometheus/values.yaml
+          - $values/charts/prometheus/values-{{.cluster}}.yaml
        - repoURL: 'https://gitub.com/marcpires/charts.git'
-         targetRevision: 65.8.0
+         targetRevision: HEAD
          ref: values
 
       destination:
