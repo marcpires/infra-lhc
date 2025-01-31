@@ -10,7 +10,7 @@ spec:
           - cluster: "in-cluster"
   template:
     metadata:
-      name: tailscale
+      name: tailscale-{{.cluster}}
     spec:
       project: infra
       source:
