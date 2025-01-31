@@ -1,8 +1,10 @@
-apiVersion: argocdproj.io/valpha1
+apiVersion: argocdproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
   name: tailscale-operator
   namespace: argocd
+  annotations:
+    argocd.argocdproj.io/sync-wave: "3"
 spec:
   generators:
     - list:
