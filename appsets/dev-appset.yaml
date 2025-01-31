@@ -1,7 +1,6 @@
-apiVersion: argocdproj.io/valpha1
 kind: ApplicationSet
 metadata:
-  name: dev-appset
+  name: argocd-dev-appset
   namespace: argocd
 spec:
   generators:
