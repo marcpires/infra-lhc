@@ -1,0 +1,41 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: prometheus-applicationset
+  namespace: argocd
+spec:
+  generators:
+    - list:
+        elements:
+          - cluster: "in-cluster"
+  template:
+    metadata:
+      name: prometheus
+    spec:
+      project: monitoring
+      source:
+       - repoURL: https://prometheus-community.github.io/helm-charts
+         targetRevision: HEAD 
+         # Not good pratice to point to a branch, treats the CRD as a mutable resource
+         chart: kube-prometheus-stack
+         helm:
+          releaseName: prometheus
+          # Override the default values for the prometheus chart
+          # using `values: |` is considered an anti-pattern, as it mixes ArgoCD manifest 
+          # and Helm manifest
+          # A better approach is to have the values load from a dependency chart .
+          valueFiles:
+          - $values/charts/prometheus/values-{{.cluster}}.yaml
+       - repoURL: 'https://gitub.com/marcpires/charts.git'
+         targetRevision: HEAD
+         ref: values
+
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: monitoring
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+        syncOptions:
+        - CreateNamespace=true
