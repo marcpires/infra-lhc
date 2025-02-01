@@ -3,8 +3,6 @@ kind: Secret
 metadata:
   name: lhc-infra
   namespace: argocd
-  #  annotations:
-  #  sealedsecrets.bitnami.com/managed: "true"
   labels:
     argocd.argoproj.io/secret-type: repository
 stringData:
