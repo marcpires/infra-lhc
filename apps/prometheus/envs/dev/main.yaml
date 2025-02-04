@@ -25,7 +25,7 @@ spec:
           # and Helm manifest
           # A better approach is to have the values load from a dependency chart .
           valueFiles:
-          - $values/charts/prometheus/values-{{.cluster}}.yaml
+          - $values/charts/prometheus/values-dev.yaml
        - repoURL: 'https://gitub.com/marcpires/charts.git'
          targetRevision: HEAD
          ref: values
