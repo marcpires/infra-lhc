@@ -3,7 +3,7 @@
 Antes de prosseguir você precisará instalar os seguintes binários:
 - [make](https://www.gnu.org/software/make/manual/make.html)
 - [k3s](https://k3s.io/)
-  ```
+```
   curl -sfL https://get.k3s.io | sh - 
 ```
 - [helm](https://helm.sh/docs/intro/install/)
