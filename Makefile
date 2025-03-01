@@ -5,7 +5,7 @@ all: plan apply
 
 check: check-tools check-pod
 
-start: check-tools init plan apply setup-kubeconfig check-pod
+start: check-tools setup-kubeconfig init plan apply check-pod
 
 plan:
 	terraform plan
