@@ -1,4 +1,6 @@
-# LHC Infra
+![LHC logo](assets/logo.png "LHC Homelab Infra")
+
+# LHC Homelab Infra
 
 Um parágrafo da descrição do projeto vai aqui
 
@@ -28,13 +30,16 @@ Uma série de exemplos passo-a-passo que informam o que você deve executar para
 Diga como essa etapa será:
 
 Realize um fork do repositório para sua conta
+```
+
+```
 
 Clone o repositório
 ```
 git clone https://gitbub.com/lhc/infra.git
 ```
 
-Renomeie as referecnais:
+Renomeie as referencias do repositório
 ```
 git remote rename origin upstream
 git rmeote add origin <endereço do seu ramificação>
