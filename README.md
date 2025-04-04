@@ -82,7 +82,9 @@ Mencione todos aqueles que ajudaram a levantar o projeto desde o seu início
 
 * **Andreyev** - 
 * **Marcelo Pires** - 
-* **Douglas Esteves** - 
+* **Douglas Esteves** -
+* **Manassés Souza** -
+* **Bruno Lima** -
 
 Você também pode ver a lista de todos os [colaboradores](https://github.com/lhc/infra/graphs/contributors) que participam deste projeto.
 
