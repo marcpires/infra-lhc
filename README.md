@@ -1,6 +1,6 @@
 # LHC Kubernetes Homelab Infra
 
-Esse é um projeto aberto e colaboratibo e têm como objetivo, prover um ambiente para criação de laboratórios, utilizando Kubernetes com a utilização da IaC e GitOps
+Esse é um projeto aberto e colaborativo e têm como objetivo, prover um ambiente para criação de laboratórios, utilizando Kubernetes com a utilização da IaC e GitOps
 para gerenciar toda a sua configuração.
 
 ## 🚀 Começando
@@ -10,11 +10,11 @@ Essas instruções permitirão que você obtenha uma cópia do projeto em opera�
 ### 📋 Pré-requisitos
 
 De que coisas você precisa para instalar o software e como instalá-lo?
-- [make](https://www.gnu.org/software/make/manual/make.html)
-- [k3s](https://docs.k3s.io/installation)
-- [helm](https://helm.sh/docs/intro/install/)
-- [terraform](https://developer.hashicorp.com'/terraform/install?product_intent=terraform#linux)
-- [kubectl](https://kubernetes.io/pt-br/docs/tasks/tools/install-kubectl-linux/)
+- [make](https://www.gnu.org/software/make/manual/make.html): pode ser instalado pelo gerenciador do S.O. (e.g. `apt install make`)
+- [k3s](https://docs.k3s.io/quick-start#install-script)
+- [helm](https://helm.sh/docs/intro/install/#from-script)
+- [terraform](https://developer.hashicorp.com/terraform/install?product_intent=terraform#linux)
+- [kubectl](https://kubernetes.io/pt-br/docs/tasks/tools/install-kubectl-linux/#instale-o-bin%C3%A1rio-kubectl-no-linux-usando-o-curl)
 - [git](https://git-scm.com/downloads)
 
 
@@ -39,7 +39,7 @@ Clone o repositório para a sua estação de desenvolvimento:
 git clone https://gitbub.com/lhc/infra.git
 ```
 
-Atualize as referencias do repositório, execute: 
+Atualize as referências do repositório, execute:
 ```
 git remote rename origin upstream
 git remote add origin <endereço do seu ramificação>
@@ -70,18 +70,18 @@ kubectl get applicationset -n argocd -o yaml
 
 ## 🖇️ Colaborando
 
-Por favor, leia o [CONTRIBUTING.md](https://gist.github.com/usuario/linkParaInfoSobreContribuicoes) para obter detalhes sobre o nosso código de conduta e o processo para nos enviar pedidos de solicitação.
+Por favor, leia o [CONTRIBUTING.md](https://github.com/lhc/infra/blob/main/CONTRIBUTING.md) para obter detalhes sobre o nosso código de conduta e o processo para nos enviar pedidos de solicitação.
 
 ## 📌 Versão
 
-Nós usamos [SemVer](http://semver.org/) para controle de versão. Para as versões disponíveis, observe as [tags neste repositório](https://github.com/suas/tags/do/projeto). 
+Nós usamos [SemVer](http://semver.org/) para controle de versão. Para as versões disponíveis, observe as [tags neste repositório](https://github.com/suas/tags/do/projeto).
 
 ## ✒️ Autores
 
 Mencione todos aqueles que ajudaram a levantar o projeto desde o seu início
 
-* **Andreyev** - 
-* **Marcelo Pires** - 
+* **Andreyev** -
+* **Marcelo Pires** -
 * **Douglas Esteves** -
 * **Manassés Souza** -
 * **Bruno Lima** -
