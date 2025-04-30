@@ -1,0 +1,31 @@
+name: Insert GitHub URL in Markdown
+
+on:
+  push:
+    branches: ['**']
+
+jobs:
+  add-url:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set GitHub URL and inject it
+        run: |
+          TEMPLATE="README.template"
+          FILE="README.md"
+          REPO_URL="${{ github.repository }}"
+          BRANCH="${{ github.ref_name }}"
+
+          echo "<!-- Este arquivo é gerado automaticamente, edite o $TEMPLATE -->" > "$FILE"
+          cat "$TEMPLATE" >> "$FILE"
+          sed -i "s|{{REPO_URL}}|${REPO_URL}|g" "$FILE"
+          sed -i "s|{{BRANCH}}|${BRANCH}|g" "$FILE"
+
+      - name: Commit changes
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git commit -am "Fix repo URL and branch" || echo "No changes to commit"
+          git push
