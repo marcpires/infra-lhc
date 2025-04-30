@@ -23,7 +23,7 @@ De que coisas você precisa para instalar o software e como instalá-lo?
 Para realizar a instalação do seu ambiente, execute os seguintes passos.
 
 ```
-export INSTALL_URL=https://raw.githubusercontent.com/andreyev/lhc_infra/refs/heads/install_by_curl/install.sh
+export INSTALL_URL=https://raw.githubusercontent.com/lhc/infra/refs/heads/main/install.sh
 curl -s $INSTALL_URL | sudo env INSTALL_URL="$INSTALL_URL" bash
 ```
 
