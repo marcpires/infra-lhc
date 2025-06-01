@@ -50,6 +50,8 @@ A senha do usuário *admin* do argocd pode ser obtida com o comando:
 kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d
 ```
 
+Use a URL https://argo.homelab/
+
 ## 🖇️ Colaborando
 
 Por favor, leia o [CONTRIBUTING.md](https://github.com/lhc/infra/blob/main/CONTRIBUTING.md) para obter detalhes sobre o nosso código de conduta e o processo para nos enviar pedidos de solicitação.
