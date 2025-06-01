@@ -1,4 +1,3 @@
-<!-- Este arquivo é gerado automaticamente, edite o README.template -->
 # LHC Kubernetes Homelab Infra
 
 Esse é um projeto aberto e colaborativo e têm como objetivo, prover um ambiente para criação de laboratórios, utilizando Kubernetes com a utilização da IaC e GitOps
@@ -20,11 +19,35 @@ De que coisas você precisa para instalar o software e como instalá-lo?
 
 ### 🔧 Instalação
 
-Para realizar a instalação do seu ambiente, execute os seguintes passos.
+Para realizar a instalação do seu ambiente, execute os seguintes passos (substituindo os valores das variáveis *REPO* e *BRANCH*):
 
 ```
-export INSTALL_URL=https://raw.githubusercontent.com/andreyev/lhc_infra/refs/heads/testes/install.sh
-curl -s $INSTALL_URL | sudo env INSTALL_URL="$INSTALL_URL" bash
+export REPO=SEU_USERNAME/NOME_DO_REPO
+export BRANCH=SUA_BRANCH
+export INSTALL_URL=https://raw.githubusercontent.com/${REPO}/refs/heads/${BRANCH}/install.sh
+curl -s $INSTALL_URL | sudo env INSTALL_URL="$INSTALL_URL" BRANCH="$BRANCH" REPO="$REPO" bash
+```
+
+### ⚙️  Executando
+
+Para operar o cluster kubernetes use o binário do k3s sob o sudo, por exemplo `sudo k3s kubectl get pods -A` ou copie as configurações do k3s para seu usuário:
+
+```
+sudo cp /etc/rancher/k3s/k3s.yaml ~/.kube/k3s-config.yaml
+sudo chown $(id -u):$(id -g) ~/.kube/k3s-config.yaml
+export KUBECONFIG=~/.kube/k3s-config.yaml
+```
+
+## 🌐 Acesso
+
+Adicione o IP do loadbalancer e os nomes dos serviços utilizados no seu /etc/hosts, como por exemplo:
+```
+echo "$(kubectl get svc -A -l app.kubernetes.io/name=traefik -o jsonpath='{.items[0].status.loadBalancer.ingress[0].ip}') argo.homelab grafana.homelab prometheus.homelab alertmanager.homelab" | sudo tee -a /etc/hosts > /dev/null
+```
+
+A senha do usuário *admin* do argocd pode ser obtida com o comando:
+```
+kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d
 ```
 
 ## 🖇️ Colaborando
