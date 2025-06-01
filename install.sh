@@ -84,4 +84,6 @@ fi )
 
 export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
 helm repo add argo https://argoproj.github.io/argo-helm
-helm upgrade --install argocd argo/argo-cd --version 7.8.23 -n argocd --create-namespace
+helm upgrade --install argocd argo/argo-cd --version 7.8.23 -n argocd --create-namespace --set server.extraArgs={--insecure}
+
+kubectl apply -f https://raw.githubusercontent.com/${REPO}/refs/heads/${BRANCH}/apps/argo/ingress.yaml
