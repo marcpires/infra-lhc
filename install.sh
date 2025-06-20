@@ -7,6 +7,8 @@ if [ "$(id -u)" -ne 0 ]; then
     ( echo "Execute com sudo ou como root" ; exit 1 )
 fi
 
+[[ ${REPO} ]] || ( echo "REPO de instalação não informado" ; exit 1 )
+[[ ${BRANCH} ]] || export BRANCH=main
 [[ ${INSTALL_URL} ]] || ( echo "URL de instalação não informada" ; exit 1 )
 
 # Identifica o sistema operacional em uso
@@ -87,3 +89,9 @@ helm repo add argo https://argoproj.github.io/argo-helm
 helm upgrade --install argocd argo/argo-cd --version 7.8.23 -n argocd --create-namespace --set server.extraArgs={--insecure}
 
 kubectl apply -f https://raw.githubusercontent.com/${REPO}/refs/heads/${BRANCH}/apps/argo/ingress.yaml
+
+if [[ ${APPS} ]]; then
+	for APP in APPS; do
+		kubectl apply -f https://raw.githubusercontent.com/${REPO}/refs/heads/${BRANCH}/apps/${APP}/app.yaml -n argocd
+	done
+fi
