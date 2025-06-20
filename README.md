@@ -30,7 +30,7 @@ export APPS='kube-prometheus'
 E execute a instalação:
 ```
 export INSTALL_URL=https://raw.githubusercontent.com/${REPO}/refs/heads/${BRANCH}/install.sh
-curl -s $INSTALL_URL | sudo env INSTALL_URL="$INSTALL_URL" BRANCH="$BRANCH" REPO="$REPO" bash
+curl -s $INSTALL_URL | sudo env INSTALL_URL="$INSTALL_URL" BRANCH="$BRANCH" REPO="$REPO" APPS="$APPS" bash
 ```
 
 ### ⚙️  Executando
