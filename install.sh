@@ -91,7 +91,7 @@ helm upgrade --install argocd argo/argo-cd --version 7.8.23 -n argocd --create-n
 kubectl apply -f https://raw.githubusercontent.com/${REPO}/refs/heads/${BRANCH}/apps/argo/ingress.yaml
 
 if [[ ${APPS} ]]; then
-	for APP in APPS; do
+	for APP in $APPS; do
 		kubectl apply -f https://raw.githubusercontent.com/${REPO}/refs/heads/${BRANCH}/apps/${APP}/app.yaml -n argocd
 	done
 fi
